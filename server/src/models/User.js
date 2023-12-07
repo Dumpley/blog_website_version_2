@@ -1,8 +1,9 @@
-module.exports = (sequelize, DataTypes) =>
-    sequelize.define("User", {
-        user_name: {
+module.exports = (sequelize, DataTypes) => {
+     return sequelize.define("User", {
+        username: {
             type: DataTypes.STRING,
             unique: true,
         },
-        user_password: DataTypes.STRING,
+        userpassword: DataTypes.STRING,
     });
+};

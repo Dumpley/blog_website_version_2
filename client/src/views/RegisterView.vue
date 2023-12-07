@@ -5,17 +5,17 @@
         <div class="register">
             <input
                 class="username"
-                v-model="user_name"
+                v-model="username"
                 type="text"
-                name="user_name"
+                name="username"
                 placeholder="user name"
             />
             <br />
             <input
                 class="userpassword"
-                v-model="user_password"
+                v-model="userpassword"
                 type="password"
-                name="user_password"
+                name="userpassword"
                 placeholder="password"
             />
             <br />
@@ -27,6 +27,7 @@
                     />
                 <div>accept</div>
             </button>
+        <div class="error" v-html="error"></div>
         </div>
     </div>
 </template>
@@ -37,19 +38,21 @@ import AuthenticationService from "@/services/Services/AuthenticationService.js"
 export default {
     data() {
         return {
-            user_name: "",
-            user_password: "",
+            username: "",
+            userpassword: "",
+            error: null,
         };
     },
     methods: {
         async register() {
-            const response = await AuthenticationService.register({
-                user_id: 1,
-                user_name: this.user_name,
-                user_password: this.user_password,
-                status: "CREATOR",
-            });
-            console.log(response.data);
+            try {
+                await AuthenticationService.register({
+                    username: this.username,
+                    userpassword: this.userpassword
+                })
+            } catch (error) {
+                this.error = error.response.data.error
+            }
         },
     },
 };
@@ -100,5 +103,9 @@ export default {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.error {
+    color: red;
 }
 </style>
