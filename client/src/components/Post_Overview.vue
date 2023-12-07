@@ -1,6 +1,7 @@
 <template>
-    <div class="wrapper_all">
-        <div class="post_overview_wrapper">
+    <PostPop v-if="show_post"></PostPop>
+    <div class="wrapper_all" > 
+        <div class="post_overview_wrapper" @click="toggle_post">
             <div class="tag">Tag</div>
             <div class="title">This is a title of a post</div>
             <div class="description">
@@ -8,11 +9,19 @@
             </div>
             <div class="likes_and_comment_wrapper">
                 <div class="likes_counter">
-                    <img style="height: 20px; margin-right:20px" src="@\assets\speaking-bubbles-line-icon.svg" alt="heart"/>
+                    <img
+                        style="height: 20px; margin-right: 20px"
+                        src="@\assets\speaking-bubbles-line-icon.svg"
+                        alt="heart"
+                    />
                     <div>0</div>
                 </div>
                 <div class="comment_counter_link">
-                    <img style="height: 20px; margin-right:20px" src="@\assets\heart-thin-icon.svg" alt="comment"/>
+                    <img
+                        style="height: 20px; margin-right: 20px"
+                        src="@\assets\heart-thin-icon.svg"
+                        alt="comment"
+                    />
                     <div>0</div>
                 </div>
             </div>
@@ -23,8 +32,26 @@
     </div>
 </template>
 
-<script setup>
+<script>
+import PostPop from "@/components/PostPOP.vue";
+import { ref } from "vue";
 
+export default {
+    components: {
+        PostPop
+    },
+    setup() {
+        const show_post = ref(false)
+
+        function toggle_post() {
+            show_post.value = !show_post.value
+        }
+
+        return {
+            show_post, toggle_post
+        }
+    }
+};
 </script>
 
 <style lang="css" scoped>
