@@ -12,9 +12,7 @@
                 <div class="post">
                     <div class="tag_wrapper">
                         <div class="icon_image">ICON</div>
-                        <div>
-                            a_funny_filterable_tag
-                        </div>
+                        <div>a_funny_filterable_tag</div>
                     </div>
                     <div class="title">a title</div>
                     <div class="description_wrapper">
@@ -48,6 +46,10 @@ export default {};
     display: flex;
     align-items: stretch;
     height: 40vw;
+}
+
+.tag_wrapper {
+    
 }
 
 .image_wrapper {
