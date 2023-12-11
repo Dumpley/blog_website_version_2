@@ -41,7 +41,7 @@ export default {
         PostPop
     },
     setup() {
-        const show_post = ref(false)
+        const show_post = ref(true)
 
         function toggle_post() {
             show_post.value = !show_post.value
