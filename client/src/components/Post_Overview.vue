@@ -1,7 +1,7 @@
 <template>
-    <PostPop v-if="show_post"></PostPop>
-    <div class="wrapper_all" > 
-        <div class="post_overview_wrapper" @click="toggle_post">
+    <PostPop v-if="store.showPopUp"></PostPop>
+    <div class="wrapper_all" @click="store.toggle_pop_up()">
+        <div class="post_overview_wrapper">
             <div class="tag">Tag</div>
             <div class="title">This is a title of a post</div>
             <div class="description">
@@ -34,23 +34,19 @@
 
 <script>
 import PostPop from "@/components/PostPOP.vue";
-import { ref } from "vue";
+import { usePostStore } from "@/pinia_store/post_store";
 
 export default {
-    components: {
-        PostPop
-    },
-    setup() {
-        const show_post = ref(false)
+  components: {
+    PostPop,
+  },
+  setup() {
+    const store = usePostStore()
 
-        function toggle_post() {
-            show_post.value = !show_post.value
-        }
-
-        return {
-            show_post, toggle_post
-        }
+    return {
+        store
     }
+  },
 };
 </script>
 
@@ -73,6 +69,7 @@ export default {
     display: flex;
     height: 180px;
     padding: 10px;
+    cursor: pointer;
 }
 .picture_wrapper {
     width: 30%;

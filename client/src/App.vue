@@ -48,6 +48,8 @@ export default {
 
 <style>
 #app {
+    --primary-color: #195474;
+    --secondary-color: #55b9c9;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
