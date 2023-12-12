@@ -73,6 +73,37 @@ export default {
 </script>
 
 <style scoped>
+.post {
+    top: 0;
+    left: 0;
+    background: #242932;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.top_wrapper {
+    display: flex;
+    align-items: stretch;
+    height: 40vw;
+}
+
+.tag_wrapper {
+    
+}
+
+.image_wrapper {
+    width: 60%;
+    flex: 1;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-position: center;
+}
 .popup-overlay {
     position: fixed;
     top: 0;
