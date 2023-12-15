@@ -1,9 +1,9 @@
 <template>
     <div class="wrapper">
-        <h1>Registration</h1>
+        <h1>Log in</h1>
         <div class="error" v-html="error"></div>
         <div class="success" v-html="successmessage"></div>
-        <div class="register">
+        <div class="login">
             <input
                 class="username"
                 v-model="username"
@@ -19,19 +19,10 @@
                 name="userpassword"
                 placeholder="password"
                 ref="passwordInput"
-                @keyup.enter="nextInput('passwordInputConfirm')"
-            />
-            <input
-                class="userpassword"
-                v-model="confirming"
-                type="password"
-                name="userpassword"
-                placeholder="confirm password"
-                ref="passwordInputConfirm"
-                @keyup.enter="register"
+                @keyup.enter="login"
             />
             <br />
-            <button @click="register">
+            <button @click="login">
                 <img
                     style="height: 20px; margin-right: 10px"
                     src="@\assets\green-checkmark-line-icon.svg"
@@ -51,20 +42,18 @@ export default {
         return {
             username: "",
             userpassword: "",
-            confirming: "",
             error: null,
             successmessage: null,
         };
     },
     methods: {
-        async register() {
+        async login() {
             try {
-                await AuthenticationService.register({
+                await AuthenticationService.login({
                     username: this.username,
                     userpassword: this.userpassword,
-                    confirming: this.confirming,
                 });
-                this.successmessage = "<b>You are registered</b>";
+                this.successmessage = "<b>You are logged in</b>";
                 this.error = null;
             } catch (error) {
                 this.error = error.response.data.error;
@@ -79,7 +68,7 @@ export default {
 </script>
 
 <style scoped>
-.register {
+.login {
     border: 2px solid #838b8e;
     display: flex;
     flex-direction: column;
@@ -87,7 +76,7 @@ export default {
     padding: 10px 10px 10px 10px;
 }
 
-.register input {
+.login input {
     margin: 10px 0px;
     background-color: #195474;
     border: 2px solid #838b8e;
@@ -97,7 +86,7 @@ export default {
     caret-color: #fff;
     color: inherit;
 }
-.register button {
+.login button {
     display: flex;
     justify-content: center;
     margin-top: 40px;
@@ -110,7 +99,7 @@ export default {
     width: 100%;
     padding: 10px 10px 10px 0px;
 }
-.register :hover {
+.login :hover {
     cursor: pointer;
 }
 .wrapper {

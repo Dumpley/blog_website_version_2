@@ -9,11 +9,19 @@
         </router-link>
 
         <router-link
+            :class="{ link: true, active: activeLink === 'log_in' }"
+            to="/login"
+            @click="setActiveLink('log_in')"
+        >
+            <div class="selection">Log in</div>
+        </router-link>
+
+        <router-link
             :class="{ link: true, active: activeLink === 'register_user' }"
             to="/register_user"
             @click="setActiveLink('register_user')"
         >
-            <div class="selection">Log In</div>
+            <div class="selection">Register</div>
         </router-link>
 
         <router-link
@@ -73,6 +81,7 @@ export default {
     border: 2px solid #838b8e;
     padding: 10px 50px 10px 50px;
     transition: background-color 0.5s;
+    box-sizing: border-box;
 }
 
 .link:hover {
@@ -92,8 +101,7 @@ export default {
     margin-bottom: 10px;
     text-align: center;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    justify-content: space-between;
 }
 
 .link.active {

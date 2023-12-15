@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .starting_page {
     display: flex;
     flex-direction: row;
